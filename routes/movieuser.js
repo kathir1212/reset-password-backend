@@ -74,13 +74,13 @@ try{
 console.log(">>>>>>>>>>>>>>");
 
   if(!userLogin){
-    return res.status(400).jsom({ message : "Invalid Credentials" });
+    return res.status(400).json({ message : "Invalid Credentials" });
   }
 
   const isValid = bcrypt.compareSync(req.body.password , userLogin.password);
 
   if(! isValid) {
-    return res.status(400).jsom({ message : "Invalid Credentials" });
+    return res.status(400).json({ message : "Invalid Credentials" });
   }
 
   const token = jwt.sign({ id : userLogin._id}, process.env.JWT_SECRET)
