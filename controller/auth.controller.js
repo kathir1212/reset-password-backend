@@ -13,7 +13,7 @@ exports.forgotPassword = async (req, res) => {
   user.resetTokenExpiry = Date.now() + 3600000; // 1 hour
   await user.save();
 
-  const resetLink = `http://localhost:5173/reset-password/${token}`;
+  const resetLink = `https://newresetpassword.netlify.app/reset-password/${token}`;
   await sendEmail(email, 'Password Reset', `<p>Click <a href="${resetLink}">here</a> to reset your password</p>`);
   
   res.json({ message: 'Password reset link sent to email.' });
